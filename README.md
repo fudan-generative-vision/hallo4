@@ -1,37 +1,29 @@
 <h1 align='center'>Hallo4: High-Fidelity Dynamic Portrait Animation via Direct Preference
 Optimization and Temporal Motion Modulation</h1>
 
-<table align='center' border="0" style="width: 100%; text-align: center; margin-top: 80px;">
-  <tr>
-    <td>
-      <video align='center' src="https://github.com/user-attachments/assets/f14bf935-ceaa-4dae-98b9-d7e54633475d" muted autoplay loop></video>
-    </td>
-  </tr>
-</table>
-
 ## 📸 Showcase
 
 <table border="0" style="width: 100%; text-align: left; margin-top: 20px;">
   <tr>
       <td>
-          <video src="https://github.com/user-attachments/assets/3fc44086-bdbf-4a54-bfe3-62cfd9dfb191" width="100%" controls autoplay loop></video>
+          <video src="https://github.com/user-attachments/assets/37f2fa64-3c46-4384-8a2c-b40d5a0ed21c" width="100%" controls autoplay loop></video>
       </td>
       <td>
-          <video src="https://github.com/user-attachments/assets/ad5a87cf-b50e-48d6-af35-774e3b1713e7" width="100%" controls autoplay loop></video>
+          <video src="https://github.com/user-attachments/assets/35a06195-60cd-4917-a70e-930aa5a14241" width="100%" controls autoplay loop></video>
       </td>
        <td>
-          <video src="https://github.com/user-attachments/assets/78c7acc3-4fa2-447e-b77d-3462d411c81c" width="100%" controls autoplay loop></video>
+          <video src="https://github.com/user-attachments/assets/3457a7c5-cbd3-4e1c-a5c5-04604965761c" width="100%" controls autoplay loop></video>
      </td>
   </tr>
   <tr>
       <td>
-          <video src="https://github.com/user-attachments/assets/f62f2b6d-9846-40be-a976-56cc7d5a8a5b" width="100%" controls autoplay loop></video>
+          <video src="https://github.com/user-attachments/assets/d22715b4-e411-4346-83a9-f21510746e42" width="100%" controls autoplay loop></video>
       </td>
        <td>
-          <video src="https://github.com/user-attachments/assets/42b6968e-c68a-4473-b773-406ccf5d90b1" width="100%" controls autoplay loop></video>
+          <video src="https://github.com/user-attachments/assets/fccffb71-8710-4f24-94ab-d249582b1b56" width="100%" controls autoplay loop></video>
      </td>
       <td>
-          <video src="https://github.com/user-attachments/assets/015f1d6d-31a8-4454-b51a-5431d3c953c2" width="100%" controls autoplay loop></video>
+          <video src="https://github.com/user-attachments/assets/86532666-01bc-415b-95d7-f89a5606f14b" width="100%" controls autoplay loop></video>
      </td>
   </tr>
 </table>
@@ -118,7 +110,7 @@ Prepare the inference list with tool script
 ```bash
 python -m prepare_case_list.py
 ```
-
+Then start inference with follow command
 ```bash
 python -m vace.vace_wan_inference --inference_list xxx
 ```
