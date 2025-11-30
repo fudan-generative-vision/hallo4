@@ -78,8 +78,9 @@ Finally, these pretrained models should be organized as follows:
 ./pretrained_models/
 |-- hallo4
 |   `-- model_weight.pth
-|-- models_t5_umt5-xxl-enc-bf16.pth
-|-- Wan2.1_VAE.pth
+|-- Wan2.1_Encoders
+    |-- Wan2.1_VAE.pth
+    |-- models_t5_umt5-xxl-enc-bf16.pth
 |-- audio_separator/
 |   |-- download_checks.json
 |   |-- mdx_model_data.json
@@ -105,15 +106,16 @@ Hallo4 have some specicial requirements on inference data due to limitation of o
 4. Ensure the vocals of audio are clear; background music is acceptable.
 
 ### 🎮 Run Inference
+To run a simple demo, just use our provided shell ```bash inf.sh```
 
-Prepare the inference list with tool script
+<!-- Prepare the inference list with tool script
 ```bash
 python -m prepare_case_list.py
 ```
 Then start inference with follow command
 ```bash
 python -m vace.vace_wan_inference --inference_list xxx
-```
+``` -->
 
 
 ## ⚠️ Social Risks and Mitigations
