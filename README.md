@@ -1,5 +1,41 @@
 <h1 align='center'>Hallo4: High-Fidelity Dynamic Portrait Animation via Direct Preference
-Optimization and Temporal Motion Modulation</h1>
+Optimization</h1>
+
+<div align='center'>
+    <a href='https://cuijh26.github.io/' target='_blank'>Jiahao Cui</a><sup>1*</sup>&emsp;
+    <a href='https://github.com/cbyzju' target='_blank'>Baoyou Chen</a><sup>1*</sup>&emsp;
+    <a href='https://github.com/xumingw' target='_blank'>Mingwang Xu</a><sup>1*</sup>&emsp;
+    <a href='https://github.com/NinoNeumann' target='_blank'>Hanlin Shang</a><sup>1</sup>&emsp;
+    <a href='https://github.com/Shr1ke777' target='_blank'>Yuxuan Chen</a><sup>1</sup>&emsp;
+</div>
+<div align='center'>
+    <a href='https://orcid.org/0000-0001-6977-9989' target='_blank'>Yun Zhan</a><sup>1</sup>&emsp;
+    <a href='https://orcid.org/0000-0002-6833-9102' target='_blank'>Zilong Dong</a><sup>5</sup>&emsp;
+    <a href='https://orcid.org/0000-0001-9866-4291' target='_blank'>Yao Yao</a><sup>4</sup>&emsp;
+    <a href='https://jingdongwang2017.github.io/' target='_blank'>Jingdong Wang</a><sup>2</sup>&emsp;
+    <a href='https://sites.google.com/site/zhusiyucs/home' target='_blank'>Siyu Zhu</a><sup>1,3✉️</sup>&emsp;
+</div>
+
+<div align='center'>
+    <sup>1</sup>Fudan University&emsp; <sup>2</sup>Baidu Inc&emsp; <sup>3</sup>Shanghai Innovative Institute&emsp;
+</div>
+
+<div align='center'>
+    <sup>4</sup>Nanjing University&emsp; <sup>5</sup>Alibaba Group&emsp;
+</div>
+
+<br>
+<div align='center'>
+    <a href='https://github.com/fudan-generative-vision/hallo4'><img src='https://img.shields.io/github/stars/fudan-generative-vision/hallo4?style=social'></a>
+    <a href='https://xyz123xyz456.github.io/hallo4/#/'><img src='https://img.shields.io/badge/Project-HomePage-Green'></a>
+    <a href='https://arxiv.org/pdf/2505.23525'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a>
+    <a href='https://huggingface.co/fudan-generative-ai/hallo4'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20HuggingFace-Model-yellow'></a>
+    <a href='https://huggingface.co/datasets/cuijh26/hallo4_data'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20HuggingFace-Data-yellow'></a>
+</div>
+<div align='Center'>
+    <i><strong><a href='https://asia.siggraph.org/2025/' target='_blank'>SIGGRAPH Asia 2025</a></strong></i>
+</div>
+<br>
 
 ## 📸 Showcase
 
