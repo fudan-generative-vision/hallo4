@@ -26,7 +26,7 @@ Optimization</h1>
 
 <br>
 <div align='center'>
-    <a href='https://github.com/fudan-generative-vision/hallo4'><img src='https://img.shields.io/github/stars/fudan-generative-vision/hallo4?style=social'></a>
+    <a href='https://github.com/fudan-generative-vision/hallo4'><img src='https://img.shields.io/github/stars/fudan-generative-vision/hallo4.svg'></a>
     <a href='https://xyz123xyz456.github.io/hallo4/#/'><img src='https://img.shields.io/badge/Project-HomePage-Green'></a>
     <a href='https://arxiv.org/pdf/2505.23525'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a>
     <a href='https://huggingface.co/fudan-generative-ai/hallo4'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20HuggingFace-Model-yellow'></a>
