@@ -53,6 +53,7 @@ class WanVace(nn.Module):
         dit_fsdp=False,
         use_usp=False,
         t5_cpu=False,
+        skip_t5=False,
         enable_skeleton_cross_attn=False,
         enable_audio_cross_attn=False,
         use_gradient_checkpointing=True,
@@ -90,13 +91,20 @@ class WanVace(nn.Module):
         self.param_dtype = config.param_dtype
 
         shard_fn = partial(shard_model, device_id=device_id)
-        self.text_encoder = T5EncoderModel(
-            text_len=config.text_len,
-            dtype=config.t5_dtype,
-            device=self.device,     #cpu offload: device=torch.device("cpu")
-            checkpoint_path=os.path.join(checkpoint_dir, config.t5_checkpoint),
-            tokenizer_path=os.path.join(checkpoint_dir, config.t5_tokenizer),
-            shard_fn=shard_fn if t5_fsdp else None)
+
+        # Skip T5 loading when using cached embeddings
+        if skip_t5:
+            logging.info("Skipping T5 model loading (using cached embeddings)")
+            self.text_encoder = None
+        else:
+            t5_device = torch.device("cpu") if t5_cpu else self.device
+            self.text_encoder = T5EncoderModel(
+                text_len=config.text_len,
+                dtype=config.t5_dtype,
+                device=t5_device,     #cpu offload: device=torch.device("cpu")
+                checkpoint_path=os.path.join(checkpoint_dir, config.t5_checkpoint),
+                tokenizer_path=os.path.join(checkpoint_dir, config.t5_tokenizer),
+                shard_fn=shard_fn if t5_fsdp else None)
 
         self.vae_stride = config.vae_stride
         self.patch_size = config.patch_size
@@ -343,7 +351,9 @@ class WanVace(nn.Module):
                  guide_scale=5.0,
                  n_prompt="",
                  seed=-1,
-                 offload_model=True):
+                 offload_model=True,
+                 cached_context=None,
+                 cached_context_null=None):
         r"""
         Generates video frames from text prompt using diffusion process.
 
@@ -384,7 +394,11 @@ class WanVace(nn.Module):
         seed_g = torch.Generator(device=self.device)
         seed_g.manual_seed(seed)
 
-        if not self.t5_cpu:
+        # Use cached context if provided, otherwise encode with T5
+        if cached_context is not None and cached_context_null is not None:
+            context = [t.to(self.device) for t in cached_context]
+            context_null = [t.to(self.device) for t in cached_context_null]
+        elif not self.t5_cpu:
             self.text_encoder.model.to(self.device)
             context = self.text_encoder([input_prompt], self.device)
             context_null = self.text_encoder([n_prompt], self.device)

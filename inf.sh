@@ -1,7 +1,13 @@
-python -m vace.vace_wan_inference \
+PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True python -m vace.vace_wan_inference \
     --prompt "a person is talking" \
     --src_video "assets/01.mp4" \
     --src_ref_images "assets/01.png" \
     --src_audio "assets/01.wav" \
     --save_dir outputs \
     --model_path "pretrained_models/hallo4/model_weight.ckpt" \
+    --offload_model \
+    --skip_t5 \
+    --cached_context_path "./cached_t5_embeddings.pt" \
+    --size "480*832" \
+    --frame_num 49 \
+    --sample_solver "dpm++"

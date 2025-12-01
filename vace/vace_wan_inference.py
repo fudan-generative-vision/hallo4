@@ -219,6 +219,18 @@ def get_parser():
         help="Whether to place T5 model on CPU.",
     )
     parser.add_argument(
+        "--cached_context_path",
+        type=str,
+        default="",
+        help="Path to pre-cached T5 embeddings (from cache_t5.py). Skips T5 model loading if provided.",
+    )
+    parser.add_argument(
+        "--skip_t5",
+        action="store_true",
+        default=False,
+        help="Skip loading T5 model entirely (requires --cached_context_path).",
+    )
+    parser.add_argument(
         "--dit_fsdp",
         action="store_true",
         default=False,
@@ -407,6 +419,19 @@ def main(args):
         src_masks = [None] * len(prompts)
 
 
+    # Load cached T5 context if provided
+    cached_context = None
+    cached_context_null = None
+    if args.cached_context_path and os.path.exists(args.cached_context_path):
+        logging.info(f"Loading cached T5 embeddings from {args.cached_context_path}")
+        cache_data = torch.load(args.cached_context_path, map_location='cpu')
+        cached_context = cache_data['context']
+        cached_context_null = cache_data['context_null']
+        logging.info(f"Cached context for prompt: '{cache_data.get('prompt', 'unknown')}'")
+        # If using cached context, we can skip T5 loading
+        if args.skip_t5:
+            args.t5_cpu = True  # Will load on CPU but not use it
+
     logging.info("Creating WanT2V pipeline.")
     wan_vace = WanVace(
         config=cfg,
@@ -419,7 +444,8 @@ def main(args):
         t5_cpu=args.t5_cpu,
         model_path=args.model_path,
         enable_skeleton_cross_attn=True,
-        enable_audio_cross_attn=True
+        enable_audio_cross_attn=True,
+        skip_t5=args.skip_t5
     )
 
     logging.info(f"Starting Inference Cases. Total count: {len(prompts)}")
@@ -533,6 +559,8 @@ def main(args):
                     guide_scale=args.sample_guide_scale,
                     seed=args.base_seed,
                     offload_model=args.offload_model,
+                    cached_context=cached_context,
+                    cached_context_null=cached_context_null,
                 ).cpu()
             torch.cuda.empty_cache()
             if i==0:
